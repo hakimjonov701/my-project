@@ -1,17 +1,21 @@
-import numpy as np
+import pandas as pd
 
-# 1. Massiv yaratish
-array_1d = np.array([1, 2, 3, 4, 5])
-array_2d = np.array([[1, 2, 3], [4, 5, 6]])  # 2D massivni o'z holida qoldirdim
+#1 . DataFream yaratish 
+data={
+    'ism ': ['ali','nodir','bobur','abbos','farhod','farrux','umar','akmal','aziz','dior'],
+    'yosh': [19,25,16,18,19,24,22,22,15,40],
+    'shahar': ['Toshkent','fargona','samarqand','fargona','fargona','Toshkent','fargona','samarqand','fargona','fargona'], 
+}
+df=pd.DataFrame(data)
+# 2. malumotlarni korish 
+print(df)
+# 3,filtirlash
+young_people=df[df['yosh']<40]
+print("40 yoshdan kichiklarni :\n",young_people)
+#4 ozgartirish
+df['yosh']+=1 #har  bir shahsni 1ga qosh
+print("yangilanga data fream:\n",df)
 
-# 2. Matematik operatsiyalar (1D massiv)
-sum_array = np.sum(array_1d)
-mean_array = np.mean(array_1d)
-product_array = np.prod(array_1d)
-
-# Natijalarni chop etish
-print("1D Massiv: ", array_1d)
-print("2D Massiv:\n", array_2d)
-print("Massiv yig'indisi (1D): ", sum_array)
-print("O'rtacha (1D): ", mean_array)
-print("Ko'paytma (1D): ", product_array)
+#5 fargonaliklar chiqsin
+city=df[df['shahar']=='fargona']
+print("fargona shahrdegilar chiqarilar",city)
